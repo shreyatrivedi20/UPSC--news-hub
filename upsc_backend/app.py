@@ -15,7 +15,7 @@ app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)  # Generate a secret key for sessions
 
 # Enable CORS for frontend integration with credentials support
-CORS(app, origins=CORS_ORIGINS, supports_credentials=True)
+CORS(app)
 
 # Initialize database on startup
 init_db()
