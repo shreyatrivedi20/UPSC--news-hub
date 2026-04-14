@@ -41,12 +41,8 @@ CRISP_SUMMARY_SENTENCES = 2   # Number of sentences in "crisp" summary for big a
 
 # Server settings
 HOST = '0.0.0.0'
-PORT = 5000
+PORT = int(os.environ.get("PORT", 5000))
 DEBUG = True
 
 # CORS settings (for frontend integration)
-CORS_ORIGINS = [
-    'http://localhost:3000',  # React default port
-    'http://localhost:5173',  # Vite default port
-    'http://localhost:8080',  # Vue default port
-]
+CORS_ORIGINS = ["*"]

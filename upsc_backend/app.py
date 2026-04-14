@@ -442,18 +442,16 @@ def check_auth():
 
 if __name__ == '__main__':
     print("\n" + "="*60)
-    print("🚀 UPSC NEWS BACKEND STARTING")
+    print("UPSC NEWS BACKEND STARTING")
     print("="*60)
     
-    # Fetch initial news
-    print("\n📰 Fetching initial news articles...")
+    print("\nFetching initial news articles...")
     try:
         fetch_and_store_news()
     except Exception as e:
-        print(f"⚠ Warning: Could not fetch initial news: {str(e)}")
+        print(f"Warning: {str(e)}")
     
-    print(f"\n✓ Server ready at http://{HOST}:{PORT}")
-    print(f"✓ Frontend should connect to: http://localhost:{PORT}")
-    print("\n" + "="*60 + "\n")
-    
-    app.run(host=HOST, port=PORT, debug=DEBUG)
+    print("\nServer starting on Render...\n")
+
+    import os
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
