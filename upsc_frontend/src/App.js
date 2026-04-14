@@ -3,7 +3,7 @@ import { Search, RefreshCw, Volume2, BookOpen, Calendar, ExternalLink, TrendingU
 import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
 
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://your-app.onrender.com';
 
 const App = () => {
   // Authentication state

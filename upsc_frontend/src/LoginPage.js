@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BookOpen, Loader2, AlertCircle, User, Lock, Mail } from 'lucide-react';
 
-const API_BASE_URL = 'http://localhost:5000';
+const API_BASE_URL = 'https://your-app.onrender.com';
 
 const LoginPage = ({ onLogin, onSwitchToSignup, notification, showNotification }) => {
   const [username, setUsername] = useState('');
