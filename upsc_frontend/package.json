@@ -26,6 +26,12 @@
       "react-app/jest"
     ]
   },
+  "eslintConfig": {
+  "extends": ["react-app"],
+  "rules": {
+    "no-unused-vars": "off"
+  }
+},
   "browserslist": {
     "production": [
       ">0.2%",
