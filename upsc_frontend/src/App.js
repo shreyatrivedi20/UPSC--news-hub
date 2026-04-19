@@ -72,6 +72,7 @@ const App = () => {
   } finally {
     console.log("Auth check completed");
     // setLoading(false); // if you use loading state
+    setAuthLoading(false);
   }
 };
 
