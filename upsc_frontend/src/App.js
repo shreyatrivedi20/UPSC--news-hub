@@ -45,27 +45,35 @@ const App = () => {
     }
   }, [isAuthenticated]);
 
+  
   const checkAuth = async () => {
-    try {
-      const response = await fetch(`${API_BASE_URL}/auth/check`, {
-        credentials: 'include',
-      });
-      const data = await response.json();
-      
-      if (data.status === 'authenticated' && data.user) {
-        setIsAuthenticated(true);
-        setCurrentUser(data.user);
-      } else {
-        setIsAuthenticated(false);
-        setCurrentUser(null);
-      }
-    } catch (err) {
+  try {
+    const response = await fetch(`${API_BASE_URL}/auth/check`);
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch auth status");
+    }
+
+    const data = await response.json();
+
+    if (data.status === 'authenticated' && data.user) {
+      setIsAuthenticated(true);
+      setCurrentUser(data.user);
+    } else {
       setIsAuthenticated(false);
       setCurrentUser(null);
-    } finally {
-      setAuthLoading(false);
     }
-  };
+
+  } catch (error) {
+    console.error("Auth check failed:", error);
+    setIsAuthenticated(false);
+    setCurrentUser(null);
+
+  } finally {
+    console.log("Auth check completed");
+    // setLoading(false); // if you use loading state
+  }
+};
 
   const handleLogin = (user) => {
     setIsAuthenticated(true);

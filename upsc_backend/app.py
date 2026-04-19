@@ -15,7 +15,11 @@ app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)  # Generate a secret key for sessions
 
 # Enable CORS for frontend integration with credentials support
-CORS(app)
+app.config['SESSION_COOKIE_SAMESITE'] = 'None'
+app.config['SESSION_COOKIE_SECURE'] = True
+CORS(app,
+     resources={r"/*": {"origins": "https://upsc-news-c0vtxbh6y-trivedishreya317-9261s-projects.vercel.app"}},
+     supports_credentials=True)
 
 # Initialize database on startup
 init_db()
@@ -428,6 +432,7 @@ def check_auth():
                     'email': user['email']
                 }
             }), 200
+    return jsonify({'status': 'unauthenticated'}), 200
     
     return jsonify({
         'status': 'not_authenticated'
