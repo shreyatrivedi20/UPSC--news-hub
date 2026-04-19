@@ -18,7 +18,7 @@ app.secret_key = secrets.token_hex(32)  # Generate a secret key for sessions
 app.config['SESSION_COOKIE_SAMESITE'] = 'None'
 app.config['SESSION_COOKIE_SECURE'] = True
 CORS(app,
-     resources={r"/*": {"origins": "https://upsc-news-c0vtxbh6y-trivedishreya317-9261s-projects.vercel.app"}},
+     resources={r"/*": {"origins": "https://upsc-news-hub.vercel.app/"}},
      supports_credentials=True)
 
 # Initialize database on startup
@@ -434,11 +434,7 @@ def check_auth():
             }), 200
     return jsonify({'status': 'unauthenticated'}), 200
     
-    return jsonify({
-        'status': 'not_authenticated'
-    }), 401
-    
-
+   
 
 
 # ============================================
